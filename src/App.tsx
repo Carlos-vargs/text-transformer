@@ -1,6 +1,6 @@
-import { TextTransformer } from '@/components/TextTransformer';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { Type } from 'lucide-react';
+import { TextTransformer } from "@/components/TextTransformer";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { Type } from "lucide-react";
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
             <h1 className="text-3xl font-bold">Transformador de Texto</h1>
           </div>
           <p className="text-muted-foreground max-w-lg mx-auto">
-            Transforma tu texto reemplazando todas las vocales con la letra que elijas.
-            ¡Pruébalo ahora!
+            Transforma tu texto reemplazando todas las vocales con la letra que
+            elijas. ¡Pruébalo ahora!
           </p>
         </header>
 
@@ -23,7 +23,16 @@ function App() {
         </main>
 
         <footer className="mt-16 text-center text-sm text-muted-foreground">
-          <p>Creado con ❤️ usando React, TypeScript y Tailwind CSS</p>
+          <p>
+            Creado con ❤️{" "}
+            <a
+              href="https://carlosvargas.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Carlos Vargas
+            </a>
+          </p>
         </footer>
       </div>
     </div>
