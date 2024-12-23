@@ -1,39 +1,43 @@
-import { useState } from 'react';
-import { AlertCircle, Wand2 } from 'lucide-react';
+import { useState } from "react";
+import { AlertCircle, Wand2 } from "lucide-react";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { TransformedText } from '@/components/TransformedText';
+} from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { TransformedText } from "@/components/TransformedText";
+import { normalizeCharacter } from "@/lib/utils";
 
-const VOWELS = ['a', 'e', 'i', 'o', 'u'];
+const VOWELS = ["a", "e", "i", "o", "u"];
 
 export function TextTransformer() {
-  const [inputText, setInputText] = useState('');
-  const [replacementLetter, setReplacementLetter] = useState('i');
-  const [transformedText, setTransformedText] = useState('');
-  const [error, setError] = useState('');
+  const [inputText, setInputText] = useState("");
+  const [replacementLetter, setReplacementLetter] = useState("i");
+  const [transformedText, setTransformedText] = useState("");
+  const [error, setError] = useState("");
 
   const handleTransform = () => {
     if (!inputText.trim()) {
-      setError('Por favor, ingresa algún texto para transformar');
+      setError("Por favor, ingresa algún texto para transformar");
       return;
     }
 
-    setError('');
+    setError("");
     const transformed = inputText
       .toLowerCase()
-      .split('')
-      .map((char) => (VOWELS.includes(char) ? replacementLetter : char))
-      .join('');
-    
+      .split("")
+      .map((char) => {
+        const baseChar = normalizeCharacter(char.toLowerCase());
+        return VOWELS.includes(baseChar) ? replacementLetter : char;
+      })
+      .join("");
+
     setTransformedText(transformed);
   };
 
